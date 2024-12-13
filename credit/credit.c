@@ -1,26 +1,52 @@
 #include <stdio.h>
 #include <cs50.h>
 
-
-int main (void)
+/**
+ * Receive cardNumber and digits
+ * Outputs single card digit from right-to-left
+ */
+int getDigit(long cardNumber, int digits)
 {
-  // American Express uses 15-digit numbers, 
-  // MasterCard uses 16-digit numbers, and 
+  long divisor = 1;
+  long digit = 0;
+
+  for (int i = 0; i < digits; i++)
+  {
+    divisor *= 10;
+  }
+
+  if ((cardNumber % divisor) != 0)
+  {
+    digit = cardNumber % divisor;
+    return digit;
+  }
+  else 
+  {
+    digit = 0;
+    return digit;
+  }
+}
+
+int getDigit(long cardNumber, int digits);
+int main()
+{
+  // American Express uses 15-digit numbers,
+  // MasterCard uses 16-digit numbers, and
   // Visa uses 13- and 16-digit numbers
 
   // Prompt for input
-  long cardNumber = get_long("Enter card number: ");
+  // long cardNumber = get_long("Enter card number: ");
 
-  // this is a way to find the last digit
-  int numberMod = cardNumber % 10;
-  printf("Last digit: %d\n", numberMod);
+  long card = 4003600000000014;
 
-  // Find a way to check other digits
+  int howManyDigits = 1;
+  int digit = getDigit(card, howManyDigits);
+  printf("Digit: %d\n", digit);
 
   // TODOs:
   // Checksum if card is valid
 
   // Check for card length and starting digits
-  
+
   // Print AMEX, MASTERCARD, VISA or invalid
 }
